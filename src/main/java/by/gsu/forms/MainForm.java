@@ -22,7 +22,7 @@ public class MainForm extends AbstractForm {
 
     private static final int PREF_WIDTH = 700;
     private static final int PREF_HEIGHT = 500;
-    private static final String TITLE = "Рассыльщик приложений на мероприятия";
+    private static final String TITLE = "Отправитель приглашений на мероприятия";
 
     private static final String ACTION_COLUMN_NAME = "Действие";
 
