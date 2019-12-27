@@ -1,27 +1,31 @@
 package by.gsu.views;
 
+import by.gsu.dao.TemplateDaoImpl;
+import by.gsu.service.TemplateService;
+import by.gsu.service.impl.TemplateServiceImpl;
+
 import javax.swing.*;
-import java.awt.*;
 
-public class MainForm extends JFrame {
-
-    private static final int PREF_WIDTH = 700;
-    private static final int PREF_HEIGHT = 500;
+public class MainForm {
 
     private JPanel mainPanel;
+
     private JTabbedPane tabs;
     private JPanel usersTab;
     private JPanel eventsTab;
     private JPanel templatesTab;
     private JPanel userEventsTab;
+    private JTable usersTable;
+    private JTable templatesTable;
 
-    public MainForm(String title) throws HeadlessException {
-        super(title);
+    private TemplateService templateService;
+
+    public MainForm() {
+        this.templateService = new TemplateServiceImpl(new TemplateDaoImpl());
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(PREF_WIDTH, PREF_HEIGHT);
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 
 }

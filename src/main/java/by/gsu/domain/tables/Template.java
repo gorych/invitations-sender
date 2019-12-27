@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Template extends TableImpl<TemplateRecord> {
 
-    private static final long serialVersionUID = -440045;
+    private static final long serialVersionUID = 1740665750;
 
     /**
      * The reference instance of <code>template</code>
@@ -65,6 +65,11 @@ public class Template extends TableImpl<TemplateRecord> {
      * The column <code>template.value</code>.
      */
     public final TableField<TemplateRecord, byte[]> VALUE = createField("value", org.jooq.impl.SQLDataType.BLOB.nullable(false), this, "");
+
+    /**
+     * The column <code>template.name</code>.
+     */
+    public final TableField<TemplateRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
 
     /**
      * Create a <code>template</code> table reference
