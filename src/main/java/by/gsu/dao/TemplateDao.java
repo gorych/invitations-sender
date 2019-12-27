@@ -2,5 +2,10 @@ package by.gsu.dao;
 
 import by.gsu.model.Template;
 
-public interface TemplateDao extends CrudDao<Template> {
+import java.util.List;
+
+public interface TemplateDao {
+
+    List<Template> findAll();
+
 }

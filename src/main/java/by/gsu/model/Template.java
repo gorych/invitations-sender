@@ -18,4 +18,9 @@ public class Template {
         this.value = record.get(TEMPLATE.VALUE);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

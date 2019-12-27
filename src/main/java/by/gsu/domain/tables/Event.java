@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Event extends TableImpl<EventRecord> {
 
-    private static final long serialVersionUID = -1790558494;
+    private static final long serialVersionUID = 1478709872;
 
     /**
      * The reference instance of <code>event</code>
@@ -70,11 +70,6 @@ public class Event extends TableImpl<EventRecord> {
      * The column <code>event.description</code>.
      */
     public final TableField<EventRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
-
-    /**
-     * The column <code>event.templateId</code>.
-     */
-    public final TableField<EventRecord, Integer> TEMPLATEID = createField("templateId", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>event</code> table reference
@@ -147,18 +142,6 @@ public class Event extends TableImpl<EventRecord> {
     @Override
     public List<UniqueKey<EventRecord>> getKeys() {
         return Arrays.<UniqueKey<EventRecord>>asList(Keys.PK_EVENT);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<ForeignKey<EventRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<EventRecord, ?>>asList(Keys.FK_EVENT_TEMPLATE_1);
-    }
-
-    public Template template() {
-        return new Template(this, Keys.FK_EVENT_TEMPLATE_1);
     }
 
     /**

@@ -5,13 +5,13 @@ package by.gsu.domain;
 
 
 import by.gsu.domain.tables.Event;
+import by.gsu.domain.tables.Person;
+import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.Template;
-import by.gsu.domain.tables.User;
-import by.gsu.domain.tables.UserEvent;
 import by.gsu.domain.tables.records.EventRecord;
+import by.gsu.domain.tables.records.PersonEventRecord;
+import by.gsu.domain.tables.records.PersonRecord;
 import by.gsu.domain.tables.records.TemplateRecord;
-import by.gsu.domain.tables.records.UserEventRecord;
-import by.gsu.domain.tables.records.UserRecord;
 
 import javax.annotation.Generated;
 
@@ -40,26 +40,25 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<EventRecord, Integer> IDENTITY_EVENT = Identities0.IDENTITY_EVENT;
+    public static final Identity<PersonRecord, Integer> IDENTITY_PERSON = Identities0.IDENTITY_PERSON;
+    public static final Identity<PersonEventRecord, Integer> IDENTITY_PERSON_EVENT = Identities0.IDENTITY_PERSON_EVENT;
     public static final Identity<TemplateRecord, Integer> IDENTITY_TEMPLATE = Identities0.IDENTITY_TEMPLATE;
-    public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
-    public static final Identity<UserEventRecord, Integer> IDENTITY_USER_EVENT = Identities0.IDENTITY_USER_EVENT;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<EventRecord> PK_EVENT = UniqueKeys0.PK_EVENT;
+    public static final UniqueKey<PersonRecord> PK_PERSON = UniqueKeys0.PK_PERSON;
+    public static final UniqueKey<PersonEventRecord> PK_PERSON_EVENT = UniqueKeys0.PK_PERSON_EVENT;
     public static final UniqueKey<TemplateRecord> PK_TEMPLATE = UniqueKeys0.PK_TEMPLATE;
-    public static final UniqueKey<UserRecord> PK_USER = UniqueKeys0.PK_USER;
-    public static final UniqueKey<UserEventRecord> PK_USER_EVENT = UniqueKeys0.PK_USER_EVENT;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final ForeignKey<EventRecord, TemplateRecord> FK_EVENT_TEMPLATE_1 = ForeignKeys0.FK_EVENT_TEMPLATE_1;
-    public static final ForeignKey<UserEventRecord, UserRecord> FK_USER_EVENT_USER_1 = ForeignKeys0.FK_USER_EVENT_USER_1;
-    public static final ForeignKey<UserEventRecord, EventRecord> FK_USER_EVENT_EVENT_1 = ForeignKeys0.FK_USER_EVENT_EVENT_1;
+    public static final ForeignKey<PersonEventRecord, PersonRecord> FK_PERSON_EVENT_PERSON_1 = ForeignKeys0.FK_PERSON_EVENT_PERSON_1;
+    public static final ForeignKey<PersonEventRecord, EventRecord> FK_PERSON_EVENT_EVENT_1 = ForeignKeys0.FK_PERSON_EVENT_EVENT_1;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -67,21 +66,20 @@ public class Keys {
 
     private static class Identities0 {
         public static Identity<EventRecord, Integer> IDENTITY_EVENT = Internal.createIdentity(Event.EVENT, Event.EVENT.ID);
+        public static Identity<PersonRecord, Integer> IDENTITY_PERSON = Internal.createIdentity(Person.PERSON, Person.PERSON.ID);
+        public static Identity<PersonEventRecord, Integer> IDENTITY_PERSON_EVENT = Internal.createIdentity(PersonEvent.PERSON_EVENT, PersonEvent.PERSON_EVENT.ID);
         public static Identity<TemplateRecord, Integer> IDENTITY_TEMPLATE = Internal.createIdentity(Template.TEMPLATE, Template.TEMPLATE.ID);
-        public static Identity<UserRecord, Integer> IDENTITY_USER = Internal.createIdentity(User.USER, User.USER.ID);
-        public static Identity<UserEventRecord, Integer> IDENTITY_USER_EVENT = Internal.createIdentity(UserEvent.USER_EVENT, UserEvent.USER_EVENT.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<EventRecord> PK_EVENT = Internal.createUniqueKey(Event.EVENT, "pk_event", Event.EVENT.ID);
+        public static final UniqueKey<PersonRecord> PK_PERSON = Internal.createUniqueKey(Person.PERSON, "pk_person", Person.PERSON.ID);
+        public static final UniqueKey<PersonEventRecord> PK_PERSON_EVENT = Internal.createUniqueKey(PersonEvent.PERSON_EVENT, "pk_person_event", PersonEvent.PERSON_EVENT.ID);
         public static final UniqueKey<TemplateRecord> PK_TEMPLATE = Internal.createUniqueKey(Template.TEMPLATE, "pk_template", Template.TEMPLATE.ID);
-        public static final UniqueKey<UserRecord> PK_USER = Internal.createUniqueKey(User.USER, "pk_user", User.USER.ID);
-        public static final UniqueKey<UserEventRecord> PK_USER_EVENT = Internal.createUniqueKey(UserEvent.USER_EVENT, "pk_user_event", UserEvent.USER_EVENT.ID);
     }
 
     private static class ForeignKeys0 {
-        public static final ForeignKey<EventRecord, TemplateRecord> FK_EVENT_TEMPLATE_1 = Internal.createForeignKey(by.gsu.domain.Keys.PK_TEMPLATE, Event.EVENT, "fk_event_template_1", Event.EVENT.TEMPLATEID);
-        public static final ForeignKey<UserEventRecord, UserRecord> FK_USER_EVENT_USER_1 = Internal.createForeignKey(by.gsu.domain.Keys.PK_USER, UserEvent.USER_EVENT, "fk_user_event_user_1", UserEvent.USER_EVENT.USERID);
-        public static final ForeignKey<UserEventRecord, EventRecord> FK_USER_EVENT_EVENT_1 = Internal.createForeignKey(by.gsu.domain.Keys.PK_EVENT, UserEvent.USER_EVENT, "fk_user_event_event_1", UserEvent.USER_EVENT.EVENTID);
+        public static final ForeignKey<PersonEventRecord, PersonRecord> FK_PERSON_EVENT_PERSON_1 = Internal.createForeignKey(by.gsu.domain.Keys.PK_PERSON, PersonEvent.PERSON_EVENT, "fk_person_event_person_1", PersonEvent.PERSON_EVENT.PERSONID);
+        public static final ForeignKey<PersonEventRecord, EventRecord> FK_PERSON_EVENT_EVENT_1 = Internal.createForeignKey(by.gsu.domain.Keys.PK_EVENT, PersonEvent.PERSON_EVENT, "fk_person_event_event_1", PersonEvent.PERSON_EVENT.EVENTID);
     }
 }

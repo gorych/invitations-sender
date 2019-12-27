@@ -5,10 +5,10 @@ package by.gsu.domain;
 
 
 import by.gsu.domain.tables.Event;
+import by.gsu.domain.tables.Person;
+import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.SqliteSequence;
 import by.gsu.domain.tables.Template;
-import by.gsu.domain.tables.User;
-import by.gsu.domain.tables.UserEvent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = -747414141;
+    private static final long serialVersionUID = 1796915547;
 
     /**
      * The reference instance of <code></code>
@@ -47,6 +47,16 @@ public class DefaultSchema extends SchemaImpl {
     public final Event EVENT = by.gsu.domain.tables.Event.EVENT;
 
     /**
+     * The table <code>person</code>.
+     */
+    public final Person PERSON = by.gsu.domain.tables.Person.PERSON;
+
+    /**
+     * The table <code>person_event</code>.
+     */
+    public final PersonEvent PERSON_EVENT = by.gsu.domain.tables.PersonEvent.PERSON_EVENT;
+
+    /**
      * The table <code>sqlite_sequence</code>.
      */
     public final SqliteSequence SQLITE_SEQUENCE = by.gsu.domain.tables.SqliteSequence.SQLITE_SEQUENCE;
@@ -55,16 +65,6 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>template</code>.
      */
     public final Template TEMPLATE = by.gsu.domain.tables.Template.TEMPLATE;
-
-    /**
-     * The table <code>user</code>.
-     */
-    public final User USER = by.gsu.domain.tables.User.USER;
-
-    /**
-     * The table <code>user_event</code>.
-     */
-    public final UserEvent USER_EVENT = by.gsu.domain.tables.UserEvent.USER_EVENT;
 
     /**
      * No further instances allowed
@@ -92,9 +92,9 @@ public class DefaultSchema extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             Event.EVENT,
+            Person.PERSON,
+            PersonEvent.PERSON_EVENT,
             SqliteSequence.SQLITE_SEQUENCE,
-            Template.TEMPLATE,
-            User.USER,
-            UserEvent.USER_EVENT);
+            Template.TEMPLATE);
     }
 }

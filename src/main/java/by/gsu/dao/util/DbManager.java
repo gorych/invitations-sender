@@ -1,4 +1,4 @@
-package by.gsu.dao;
+package by.gsu.dao.util;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

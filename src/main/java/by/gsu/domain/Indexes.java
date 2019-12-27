@@ -5,9 +5,9 @@ package by.gsu.domain;
 
 
 import by.gsu.domain.tables.Event;
+import by.gsu.domain.tables.Person;
+import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.Template;
-import by.gsu.domain.tables.User;
-import by.gsu.domain.tables.UserEvent;
 
 import javax.annotation.Generated;
 
@@ -34,9 +34,9 @@ public class Indexes {
     // -------------------------------------------------------------------------
 
     public static final Index EVENTS_ID_UINDEX = Indexes0.EVENTS_ID_UINDEX;
-    public static final Index TEMPLATE_ID_UINDEX = Indexes0.TEMPLATE_ID_UINDEX;
-    public static final Index USER_ID_UINDEX = Indexes0.USER_ID_UINDEX;
+    public static final Index PERSON_ID_UINDEX = Indexes0.PERSON_ID_UINDEX;
     public static final Index USER_EVENT_ID_UINDEX = Indexes0.USER_EVENT_ID_UINDEX;
+    public static final Index TEMPLATE_ID_UINDEX = Indexes0.TEMPLATE_ID_UINDEX;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -44,8 +44,8 @@ public class Indexes {
 
     private static class Indexes0 {
         public static Index EVENTS_ID_UINDEX = Internal.createIndex("events_id_uindex", Event.EVENT, new OrderField[] { Event.EVENT.ID }, true);
+        public static Index PERSON_ID_UINDEX = Internal.createIndex("person_id_uindex", Person.PERSON, new OrderField[] { Person.PERSON.ID }, true);
+        public static Index USER_EVENT_ID_UINDEX = Internal.createIndex("user_event_id_uindex", PersonEvent.PERSON_EVENT, new OrderField[] { PersonEvent.PERSON_EVENT.ID }, true);
         public static Index TEMPLATE_ID_UINDEX = Internal.createIndex("template_id_uindex", Template.TEMPLATE, new OrderField[] { Template.TEMPLATE.ID }, true);
-        public static Index USER_ID_UINDEX = Internal.createIndex("user_id_uindex", User.USER, new OrderField[] { User.USER.ID }, true);
-        public static Index USER_EVENT_ID_UINDEX = Internal.createIndex("user_event_id_uindex", UserEvent.USER_EVENT, new OrderField[] { UserEvent.USER_EVENT.ID }, true);
     }
 }

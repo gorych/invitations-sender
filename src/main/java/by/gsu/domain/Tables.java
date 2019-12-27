@@ -5,10 +5,10 @@ package by.gsu.domain;
 
 
 import by.gsu.domain.tables.Event;
+import by.gsu.domain.tables.Person;
+import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.SqliteSequence;
 import by.gsu.domain.tables.Template;
-import by.gsu.domain.tables.User;
-import by.gsu.domain.tables.UserEvent;
 
 import javax.annotation.Generated;
 
@@ -32,6 +32,16 @@ public class Tables {
     public static final Event EVENT = by.gsu.domain.tables.Event.EVENT;
 
     /**
+     * The table <code>person</code>.
+     */
+    public static final Person PERSON = by.gsu.domain.tables.Person.PERSON;
+
+    /**
+     * The table <code>person_event</code>.
+     */
+    public static final PersonEvent PERSON_EVENT = by.gsu.domain.tables.PersonEvent.PERSON_EVENT;
+
+    /**
      * The table <code>sqlite_sequence</code>.
      */
     public static final SqliteSequence SQLITE_SEQUENCE = by.gsu.domain.tables.SqliteSequence.SQLITE_SEQUENCE;
@@ -40,14 +50,4 @@ public class Tables {
      * The table <code>template</code>.
      */
     public static final Template TEMPLATE = by.gsu.domain.tables.Template.TEMPLATE;
-
-    /**
-     * The table <code>user</code>.
-     */
-    public static final User USER = by.gsu.domain.tables.User.USER;
-
-    /**
-     * The table <code>user_event</code>.
-     */
-    public static final UserEvent USER_EVENT = by.gsu.domain.tables.UserEvent.USER_EVENT;
 }
