@@ -7,11 +7,9 @@ package by.gsu.domain;
 import by.gsu.domain.tables.Event;
 import by.gsu.domain.tables.Person;
 import by.gsu.domain.tables.PersonEvent;
-import by.gsu.domain.tables.Template;
 import by.gsu.domain.tables.records.EventRecord;
 import by.gsu.domain.tables.records.PersonEventRecord;
 import by.gsu.domain.tables.records.PersonRecord;
-import by.gsu.domain.tables.records.TemplateRecord;
 
 import javax.annotation.Generated;
 
@@ -42,7 +40,6 @@ public class Keys {
     public static final Identity<EventRecord, Integer> IDENTITY_EVENT = Identities0.IDENTITY_EVENT;
     public static final Identity<PersonRecord, Integer> IDENTITY_PERSON = Identities0.IDENTITY_PERSON;
     public static final Identity<PersonEventRecord, Integer> IDENTITY_PERSON_EVENT = Identities0.IDENTITY_PERSON_EVENT;
-    public static final Identity<TemplateRecord, Integer> IDENTITY_TEMPLATE = Identities0.IDENTITY_TEMPLATE;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -51,7 +48,6 @@ public class Keys {
     public static final UniqueKey<EventRecord> PK_EVENT = UniqueKeys0.PK_EVENT;
     public static final UniqueKey<PersonRecord> PK_PERSON = UniqueKeys0.PK_PERSON;
     public static final UniqueKey<PersonEventRecord> PK_PERSON_EVENT = UniqueKeys0.PK_PERSON_EVENT;
-    public static final UniqueKey<TemplateRecord> PK_TEMPLATE = UniqueKeys0.PK_TEMPLATE;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -68,14 +64,12 @@ public class Keys {
         public static Identity<EventRecord, Integer> IDENTITY_EVENT = Internal.createIdentity(Event.EVENT, Event.EVENT.ID);
         public static Identity<PersonRecord, Integer> IDENTITY_PERSON = Internal.createIdentity(Person.PERSON, Person.PERSON.ID);
         public static Identity<PersonEventRecord, Integer> IDENTITY_PERSON_EVENT = Internal.createIdentity(PersonEvent.PERSON_EVENT, PersonEvent.PERSON_EVENT.ID);
-        public static Identity<TemplateRecord, Integer> IDENTITY_TEMPLATE = Internal.createIdentity(Template.TEMPLATE, Template.TEMPLATE.ID);
     }
 
     private static class UniqueKeys0 {
         public static final UniqueKey<EventRecord> PK_EVENT = Internal.createUniqueKey(Event.EVENT, "pk_event", Event.EVENT.ID);
         public static final UniqueKey<PersonRecord> PK_PERSON = Internal.createUniqueKey(Person.PERSON, "pk_person", Person.PERSON.ID);
         public static final UniqueKey<PersonEventRecord> PK_PERSON_EVENT = Internal.createUniqueKey(PersonEvent.PERSON_EVENT, "pk_person_event", PersonEvent.PERSON_EVENT.ID);
-        public static final UniqueKey<TemplateRecord> PK_TEMPLATE = Internal.createUniqueKey(Template.TEMPLATE, "pk_template", Template.TEMPLATE.ID);
     }
 
     private static class ForeignKeys0 {

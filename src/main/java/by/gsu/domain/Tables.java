@@ -8,7 +8,6 @@ import by.gsu.domain.tables.Event;
 import by.gsu.domain.tables.Person;
 import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.SqliteSequence;
-import by.gsu.domain.tables.Template;
 
 import javax.annotation.Generated;
 
@@ -45,9 +44,4 @@ public class Tables {
      * The table <code>sqlite_sequence</code>.
      */
     public static final SqliteSequence SQLITE_SEQUENCE = by.gsu.domain.tables.SqliteSequence.SQLITE_SEQUENCE;
-
-    /**
-     * The table <code>template</code>.
-     */
-    public static final Template TEMPLATE = by.gsu.domain.tables.Template.TEMPLATE;
 }

@@ -1,48 +1,46 @@
 package by.gsu.forms;
 
 import by.gsu.dao.impl.PersonDaoImpl;
-import by.gsu.dao.impl.TemplateDaoImpl;
 import by.gsu.forms.custom.tablemodel.InvitationFormTableModel;
 import by.gsu.mail.sender.impl.GmailMailSender;
 import by.gsu.model.Event;
 import by.gsu.model.Person;
-import by.gsu.model.Template;
 import by.gsu.service.PersonService;
-import by.gsu.service.TemplateService;
 import by.gsu.service.impl.PersonServiceImpl;
-import by.gsu.service.impl.TemplateServiceImpl;
 
 import javax.swing.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InvitationForm extends AbstractForm {
 
     private static final int PREF_WIDTH = 400;
     private static final int PREF_HEIGHT = 400;
-    private static final String TITLE = "Приглашение на мероприятие";
+    private static final String TITLE = "Отправка приглашения";
 
     private JPanel mainPanel;
-    private JComboBox<Template> templatesComboBox;
     private JButton sendInvite;
     private JTable peopleTable;
 
     private Event event;
 
     private PersonService personService;
-    private TemplateService templateService;
 
     public InvitationForm(Event event) {
         this.event = event;
 
         this.personService = new PersonServiceImpl(new PersonDaoImpl());
-        this.templateService = new TemplateServiceImpl(new TemplateDaoImpl());
-
-        List<Template> templates = templateService.getAll();
-        templates.forEach(templatesComboBox::addItem);
 
         initPersonTable();
         sendInvite.addActionListener(e -> {
-            new GmailMailSender().send("gorych911@gmail.com", "Приглашение на мероприятие", null);
+            Map<String, Object> dataModel = new HashMap<>();
+            dataModel.put("day", 15);
+            dataModel.put("month", "ЯНВАРЬ");
+            dataModel.put("firstName", "Максим");
+            dataModel.put("lastName", "Сергеевич");
+
+            new GmailMailSender().send("gorych911@gmail.com", "Приглашение на мероприятие", dataModel);
         });
     }
 
