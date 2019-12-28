@@ -25,21 +25,6 @@
 
         /* MOBILE STYLES */
         @media screen and (max-width: 600px) {
-            .img-max {
-                width: 100% !important;
-                max-width: 100% !important;
-                height: auto !important;
-            }
-
-            .max-width {
-                max-width: 100% !important;
-            }
-
-            .mobile-wrapper {
-                width: 85% !important;
-                max-width: 85% !important;
-            }
-
             .mobile-padding {
                 padding-left: 5% !important;
                 padding-right: 5% !important;
@@ -55,18 +40,13 @@
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
-        <td align="center" valign="top" width="100%" background="cid:background" bgcolor="#3b4a69" style="background: #3b4a69 url('cid:background'); background-size: cover; padding: 50px 15px;" class="mobile-padding">
+        <td align="center" valign="top" width="100%" bgcolor="#3b4a69" style="background: #3b4a69; background-size: cover; padding: 50px 15px;" class="mobile-padding">
             <!--[if (gte mso 9)|(IE)]>
             <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
                 <tr>
                     <td align="center" valign="top" width="600">
             <![endif]-->
             <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                <tr>
-                    <td align="center" valign="top" style="padding: 0 0 20px 0;">
-                        <img src="cid:wheel" width="50" height="50" border="0" style="display: block;">
-                    </td>
-                </tr>
                 <tr>
                     <td align="center" valign="top" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
                         <h1 style="font-size: 40px; color: #ffffff;">Приглашение на мероприятие</h1>
@@ -77,12 +57,12 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="80%" style="max-width: 200px;">
                             <tr>
                                 <td align="center" bgcolor="red" style="color: #ffffff; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; padding: 10px; border-radius: 3px 3px 0 0;">
-                                    ДЕКАБРЬ
+                                    ${month}
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" bgcolor="#ffffff" style="color: #444444; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 48px; padding: 15px; border-radius: 0 0 3px 3px;">
-                                    31
+                                    ${day}
                                 </td>
                             </tr>
                         </table>
@@ -92,7 +72,7 @@
                     <td align="center" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; padding-top: 0;">
 
                         <p style="color: #b7bdc9; font-size: 16px; line-height: 24px; margin: 0;">
-                            <strong>Здравствуйте, Иван Леонидович!</strong><br/> Вы приглашены на туристическую выставку «Трэвелмаркет — 2019» в г. Гомель.
+                            <strong>Здравствуйте, ${firstName} ${lastName}!</strong><br/> Вы приглашены на туристическую выставку «Трэвелмаркет — 2019» в г. Гомель.
                             Мы будем рады представить всю информацию как о уже хорошо зарекомендовавших и пользующихся неизменным успехом маршрутах в Китай, Малайзию, Таиланд и страны Океании, так и предложить Вам новые перспективные направления в Аргентину и Перу.
                             Надеемся увидеть Вас в числе наших гостей на выставке!
                         </p>
@@ -115,11 +95,6 @@
                     <td align="center" valign="top" width="600">
             <![endif]-->
             <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
-                <tr>
-                    <td align="center" valign="top" style="padding: 0 0 5px 0;">
-                        <img src="cid:wheel" width="35" height="35" border="0" style="display: block;">
-                    </td>
-                </tr>
                 <tr>
                     <td align="center" valign="top" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #999999;">
                         <p style="font-size: 14px; line-height: 20px;">

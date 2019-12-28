@@ -13,8 +13,6 @@ import by.gsu.service.impl.PersonServiceImpl;
 import by.gsu.service.impl.TemplateServiceImpl;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class InvitationForm extends AbstractForm {
@@ -44,7 +42,7 @@ public class InvitationForm extends AbstractForm {
 
         initPersonTable();
         sendInvite.addActionListener(e -> {
-            new GmailMailSender().send("gorych911@gmail.com", "Приглашение на мероприятие", "");
+            new GmailMailSender().send("gorych911@gmail.com", "Приглашение на мероприятие", null);
         });
     }
 
