@@ -2,6 +2,8 @@ package by.gsu.forms;
 
 import by.gsu.dao.impl.PersonDaoImpl;
 import by.gsu.dao.impl.TemplateDaoImpl;
+import by.gsu.forms.custom.tablemodel.InvitationFormTableModel;
+import by.gsu.mail.sender.impl.GmailMailSender;
 import by.gsu.model.Event;
 import by.gsu.model.Person;
 import by.gsu.model.Template;
@@ -11,7 +13,8 @@ import by.gsu.service.impl.PersonServiceImpl;
 import by.gsu.service.impl.TemplateServiceImpl;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 public class InvitationForm extends AbstractForm {
@@ -40,6 +43,9 @@ public class InvitationForm extends AbstractForm {
         templates.forEach(templatesComboBox::addItem);
 
         initPersonTable();
+        sendInvite.addActionListener(e -> {
+            new GmailMailSender().send("gorych911@gmail.com", "Приглашение на мероприятие", "");
+        });
     }
 
     private void initPersonTable() {
@@ -56,7 +62,7 @@ public class InvitationForm extends AbstractForm {
             data[i][4] = person.getEmail();
         }
 
-        this.peopleTable.setModel(new DefaultTableModel(data, columnNames));
+        this.peopleTable.setModel(new InvitationFormTableModel(data, columnNames, 0));
     }
 
     @Override

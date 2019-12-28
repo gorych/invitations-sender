@@ -9,7 +9,9 @@
     <children>
       <component id="80d2f" class="javax.swing.JComboBox" binding="templatesComboBox">
         <constraints border-constraint="North"/>
-        <properties/>
+        <properties>
+          <toolTipText value=""/>
+        </properties>
       </component>
       <component id="a1c85" class="javax.swing.JButton" binding="sendInvite">
         <constraints border-constraint="South"/>

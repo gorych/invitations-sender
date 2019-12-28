@@ -23,7 +23,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="3593d" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="3593d" binding="peopleTab" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="Люди"/>
             </constraints>
@@ -47,7 +47,7 @@
               </scrollpane>
             </children>
           </grid>
-          <grid id="753d6" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="753d6" binding="eventsTab" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="Мероприятия"/>
             </constraints>

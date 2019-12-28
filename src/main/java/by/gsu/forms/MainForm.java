@@ -5,6 +5,7 @@ import by.gsu.dao.impl.PersonDaoImpl;
 import by.gsu.dao.util.DbManager;
 import by.gsu.forms.custom.ButtonEditor;
 import by.gsu.forms.custom.ButtonRender;
+import by.gsu.forms.custom.tablemodel.ReadOnlyTableModel;
 import by.gsu.model.Event;
 import by.gsu.model.Person;
 import by.gsu.service.EventService;
@@ -14,9 +15,11 @@ import by.gsu.service.impl.PersonServiceImpl;
 import by.gsu.util.FormUtil;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainForm extends AbstractForm {
 
@@ -28,27 +31,37 @@ public class MainForm extends AbstractForm {
 
     private JPanel mainPanel;
     private JTabbedPane tabs;
+
+    private JPanel peopleTab;
+    private JPanel eventsTab;
+
     private JTable peopleTable;
     private JTable eventsTable;
 
     private EventService eventService;
     private PersonService personService;
 
+    private final Map<Component, Runnable> onSelectTabActions;
+
     public MainForm() {
+        onSelectTabActions = new HashMap<>();
+        onSelectTabActions.put(peopleTab, this::initPeopleTable);
+        onSelectTabActions.put(eventsTab, this::initEventTable);
+
         this.eventService = new EventServiceImpl(new EventDaoImpl());
         this.personService = new PersonServiceImpl(new PersonDaoImpl());
 
-        initPersonTable();
+        initPeopleTable();
         initEventTable();
 
-        tabs.addChangeListener((event) -> {
-            initPersonTable();
-            initEventTable();
-            //TODO MAP functions by index or FactoryMethod
+        tabs.addChangeListener(event -> {
+            Component selectedTab = tabs.getSelectedComponent();
+            Runnable action = onSelectTabActions.get(selectedTab);
+            action.run();
         });
     }
 
-    private void initPersonTable() {
+    private void initPeopleTable() {
         String[] columnNames = new String[]{"Идентификатор", "Имя", "Фамилия", "Электронная почта"};
         List<Person> people = personService.getAll();
 
@@ -61,7 +74,7 @@ public class MainForm extends AbstractForm {
             data[i][3] = person.getEmail();
         }
 
-        this.peopleTable.setModel(new DefaultTableModel(data, columnNames));
+        this.peopleTable.setModel(new ReadOnlyTableModel(data, columnNames));
     }
 
     private void initEventTable() {
@@ -77,7 +90,7 @@ public class MainForm extends AbstractForm {
             data[i][3] = "Отправить приглашение";
         }
 
-        this.eventsTable.setModel(new DefaultTableModel(data, columnNames));
+        this.eventsTable.setModel(new ReadOnlyTableModel(data, columnNames, 3));
 
         TableColumn actionColumn = this.eventsTable.getColumn(ACTION_COLUMN_NAME);
         actionColumn.setCellRenderer(new ButtonRender());
