@@ -9,6 +9,7 @@ import java.time.format.TextStyle;
 import java.util.Locale;
 
 import static by.gsu.domain.Tables.EVENT;
+import static by.gsu.util.DateTimeUtil.DD_MM_YYYY_FORMATTER;
 import static by.gsu.util.DateTimeUtil.YYYY_MM_DD_FORMATTER;
 
 @Data
@@ -34,6 +35,37 @@ public class Event {
 
     public String getMonth() {
         return date.getMonth().getDisplayName(TextStyle.FULL_STANDALONE, new Locale("ru"));
+    }
+
+    public static class Builder {
+
+        private String name;
+        private String description;
+        private String date;
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder setDate(String date) {
+            this.date = date;
+            return this;
+        }
+
+        public Event build() {
+            Event event = new Event();
+            event.setName(name);
+            event.setDescription(description);
+            event.setDate(LocalDate.parse(date, DD_MM_YYYY_FORMATTER));
+            return event;
+        }
+
     }
 
 }

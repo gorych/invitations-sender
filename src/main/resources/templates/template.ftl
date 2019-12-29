@@ -72,7 +72,7 @@
                 <tr>
                     <td align="center" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; padding-top: 0;">
                         <p style="color: #b7bdc9; font-size: 16px; line-height: 24px; margin: 0;">
-                            <strong>Здравствуйте, ${recipientFirstName} ${recipientLastName}!</strong><br/>
+                            <strong>Здравствуйте, ${recipientFirstName} ${recipientMiddleName}!</strong><br/>
                             ${eventDescription}
                         </p>
                     </td>

@@ -6,6 +6,7 @@ package by.gsu.domain;
 
 import by.gsu.domain.tables.Event;
 import by.gsu.domain.tables.Person;
+import by.gsu.domain.tables.PersonDgTmp;
 import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.SqliteSequence;
 
@@ -34,6 +35,11 @@ public class Tables {
      * The table <code>person</code>.
      */
     public static final Person PERSON = by.gsu.domain.tables.Person.PERSON;
+
+    /**
+     * The table <code>person_dg_tmp</code>.
+     */
+    public static final PersonDgTmp PERSON_DG_TMP = by.gsu.domain.tables.PersonDgTmp.PERSON_DG_TMP;
 
     /**
      * The table <code>person_event</code>.

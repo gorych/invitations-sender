@@ -19,13 +19,13 @@
         <children>
           <grid id="3593d" binding="peopleTab" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title="Люди"/>
+              <tabbedpane title="Адресаты"/>
             </constraints>
             <properties/>
             <border type="none"/>
             <children>
               <scrollpane id="9e644">
-                <constraints border-constraint="Center"/>
+                <constraints border-constraint="North"/>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
                 </properties>
@@ -39,6 +39,12 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <text value="Добавить нового адресата"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <grid id="753d6" binding="eventsTab" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -49,7 +55,7 @@
             <border type="none"/>
             <children>
               <scrollpane id="ab436">
-                <constraints border-constraint="Center"/>
+                <constraints border-constraint="North"/>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
                 </properties>
@@ -61,6 +67,12 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="78497" class="javax.swing.JButton" binding="addEventButton">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <text value="Добавить новое мероприятие"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>

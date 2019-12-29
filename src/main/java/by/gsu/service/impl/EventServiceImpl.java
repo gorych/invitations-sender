@@ -17,4 +17,9 @@ public class EventServiceImpl implements EventService {
         return eventDao.findAll();
     }
 
+    @Override
+    public void add(Event event) {
+        eventDao.save(event);
+    }
+
 }

@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class InvitationForm extends AbstractForm {
 
@@ -60,12 +61,12 @@ public class InvitationForm extends AbstractForm {
             if (isCheckedRow) {
                 checkedRowCount++;
 
-                String recipientFirstName = String.valueOf(tableModel.getValueAt(i, 1));
-                String recipientLastName = String.valueOf(tableModel.getValueAt(i, 2));
-                String recipientEmail = String.valueOf(tableModel.getValueAt(i, 3));
+                String recipientFirstName = String.valueOf(tableModel.getValueAt(i, 2));
+                String recipientMiddleName = String.valueOf(tableModel.getValueAt(i, 3));
+                String recipientEmail = String.valueOf(tableModel.getValueAt(i, 4));
 
                 dataModel.put("recipientFirstName", recipientFirstName);
-                dataModel.put("recipientLastName", recipientLastName);
+                dataModel.put("recipientMiddleName", recipientMiddleName);
 
                 CompletableFuture.runAsync(() -> MAIL_SENDER.send(recipientEmail, MAIL_SUBJECT, dataModel));
             }
@@ -80,16 +81,17 @@ public class InvitationForm extends AbstractForm {
     }
 
     private void initPersonTable() {
-        String[] columnNames = new String[]{"Выбор", "Имя", "Фамилия", "Электронная почта"};
+        String[] columnNames = new String[]{"Выбор", "Фамилия", "Имя", "Отчество", "Электронная почта"};
         List<Person> people = personService.getAll();
 
         Object[][] data = new Object[people.size()][columnNames.length];
         for (int i = 0; i < people.size(); i++) {
             Person person = people.get(i);
             data[i][0] = false;
-            data[i][1] = person.getFirstName();
-            data[i][2] = person.getLastName();
-            data[i][3] = person.getEmail();
+            data[i][1] = person.getLastName();
+            data[i][2] = person.getFirstName();
+            data[i][3] = person.getMiddleName();
+            data[i][4] = person.getEmail();
         }
 
         this.peopleTable.setModel(new InvitationFormTableModel(data, columnNames, 0));
@@ -113,6 +115,11 @@ public class InvitationForm extends AbstractForm {
     @Override
     public int getHeight() {
         return PREF_HEIGHT;
+    }
+
+    @Override
+    public int getDefaultCloseOperation() {
+        return EXIT_ON_CLOSE;
     }
 
     @Override

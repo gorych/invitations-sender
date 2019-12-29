@@ -12,6 +12,8 @@ public abstract class AbstractForm {
 
     public abstract int getHeight();
 
+    public abstract int getDefaultCloseOperation();
+
     public abstract void onCloseAction();
 
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface CrudDao<T> {
 
-    Optional<T> findById(long id);
+    Optional<T> findById(int id);
 
     List<T> findAll();
 
