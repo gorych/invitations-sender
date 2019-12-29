@@ -10,7 +10,7 @@
       <component id="a1c85" class="javax.swing.JButton" binding="sendInvite">
         <constraints border-constraint="South"/>
         <properties>
-          <text value="Button"/>
+          <text value="Отправить приглашения"/>
         </properties>
       </component>
       <scrollpane id="233d8">

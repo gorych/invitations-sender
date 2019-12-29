@@ -1,16 +1,21 @@
 package by.gsu.forms.custom;
 
+import by.gsu.model.Event;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.function.Consumer;
 
-public class ButtonEditor extends DefaultCellEditor {
+public class InvitationButtonEditor extends DefaultCellEditor {
 
     private JButton button;
     private String label;
     private boolean isPressed;
-    private transient Runnable onPressAction;
 
-    public ButtonEditor(Runnable onPressAction) {
+    private transient Consumer<Event> onPressAction;
+    private transient Event event;
+
+    public InvitationButtonEditor(Consumer<Event> onPressAction) {
         super(new JCheckBox());
         this.button = new JButton();
         this.button.setOpaque(true);
@@ -27,6 +32,9 @@ public class ButtonEditor extends DefaultCellEditor {
             button.setForeground(table.getForeground());
             button.setBackground(table.getBackground());
         }
+
+        event = (Event) table.getModel().getValueAt(row, 4);
+
         label = (value == null) ? "" : value.toString();
         button.setText(label);
         isPressed = true;
@@ -36,7 +44,7 @@ public class ButtonEditor extends DefaultCellEditor {
     @Override
     public Object getCellEditorValue() {
         if (isPressed) {
-            onPressAction.run();
+            onPressAction.accept(event);
         }
         isPressed = false;
         return label;

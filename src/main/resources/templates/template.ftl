@@ -50,6 +50,7 @@
                 <tr>
                     <td align="center" valign="top" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
                         <h1 style="font-size: 40px; color: #ffffff;">Приглашение на мероприятие</h1>
+                        <h1 style="font-size: 25px; color: #ffffff;">${eventName}</h1>
                     </td>
                 </tr>
                 <tr>
@@ -57,12 +58,12 @@
                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="80%" style="max-width: 200px;">
                             <tr>
                                 <td align="center" bgcolor="red" style="color: #ffffff; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; padding: 10px; border-radius: 3px 3px 0 0;">
-                                    ${month}
+                                    ${eventMonth}
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" bgcolor="#ffffff" style="color: #444444; font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 48px; padding: 15px; border-radius: 0 0 3px 3px;">
-                                    ${day}
+                                    ${eventDay}
                                 </td>
                             </tr>
                         </table>
@@ -70,13 +71,10 @@
                 </tr>
                 <tr>
                     <td align="center" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; padding-top: 0;">
-
                         <p style="color: #b7bdc9; font-size: 16px; line-height: 24px; margin: 0;">
-                            <strong>Здравствуйте, ${firstName} ${lastName}!</strong><br/> Вы приглашены на туристическую выставку «Трэвелмаркет — 2019» в г. Гомель.
-                            Мы будем рады представить всю информацию как о уже хорошо зарекомендовавших и пользующихся неизменным успехом маршрутах в Китай, Малайзию, Таиланд и страны Океании, так и предложить Вам новые перспективные направления в Аргентину и Перу.
-                            Надеемся увидеть Вас в числе наших гостей на выставке!
+                            <strong>Здравствуйте, ${recipientFirstName} ${recipientLastName}!</strong><br/>
+                            ${eventDescription}
                         </p>
-
                     </td>
                 </tr>
             </table>

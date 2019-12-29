@@ -3,7 +3,7 @@ package by.gsu.forms;
 import by.gsu.dao.impl.EventDaoImpl;
 import by.gsu.dao.impl.PersonDaoImpl;
 import by.gsu.dao.util.DbManager;
-import by.gsu.forms.custom.ButtonEditor;
+import by.gsu.forms.custom.InvitationButtonEditor;
 import by.gsu.forms.custom.ButtonRender;
 import by.gsu.forms.custom.tablemodel.ReadOnlyTableModel;
 import by.gsu.model.Event;
@@ -28,6 +28,7 @@ public class MainForm extends AbstractForm {
     private static final String TITLE = "Отправитель приглашений на мероприятия";
 
     private static final String ACTION_COLUMN_NAME = "Действие";
+    private static final String HIDDEN_COLUMN_NAME = "Hidden";
 
     private JPanel mainPanel;
     private JTabbedPane tabs;
@@ -44,6 +45,9 @@ public class MainForm extends AbstractForm {
     private final Map<Component, Runnable> onSelectTabActions;
 
     public MainForm() {
+        this.peopleTable.setRowSelectionAllowed(true);
+        this.eventsTable.setRowSelectionAllowed(true);
+
         onSelectTabActions = new HashMap<>();
         onSelectTabActions.put(peopleTab, this::initPeopleTable);
         onSelectTabActions.put(eventsTab, this::initEventTable);
@@ -63,8 +67,8 @@ public class MainForm extends AbstractForm {
 
     private void initPeopleTable() {
         String[] columnNames = new String[]{"Идентификатор", "Имя", "Фамилия", "Электронная почта"};
-        List<Person> people = personService.getAll();
 
+        List<Person> people = personService.getAll();
         Object[][] data = new Object[people.size()][columnNames.length];
         for (int i = 0; i < people.size(); i++) {
             Person person = people.get(i);
@@ -78,7 +82,7 @@ public class MainForm extends AbstractForm {
     }
 
     private void initEventTable() {
-        String[] columnNames = new String[]{"Идентификатор", "Название", "Описание", ACTION_COLUMN_NAME};
+        String[] columnNames = new String[]{"Идентификатор", "Название", "Описание", ACTION_COLUMN_NAME, HIDDEN_COLUMN_NAME};
         List<Event> events = eventService.getAll();
 
         Object[][] data = new Object[events.size()][columnNames.length];
@@ -88,14 +92,20 @@ public class MainForm extends AbstractForm {
             data[i][1] = event.getName();
             data[i][2] = event.getDescription();
             data[i][3] = "Отправить приглашение";
+            data[i][4] = event;
         }
 
         this.eventsTable.setModel(new ReadOnlyTableModel(data, columnNames, 3));
 
+        TableColumn hiddenColumn = this.eventsTable.getColumn(HIDDEN_COLUMN_NAME);
+        hiddenColumn.setWidth(0);
+        hiddenColumn.setMinWidth(0);
+        hiddenColumn.setMaxWidth(0);
+
         TableColumn actionColumn = this.eventsTable.getColumn(ACTION_COLUMN_NAME);
         actionColumn.setCellRenderer(new ButtonRender());
-        actionColumn.setCellEditor(new ButtonEditor(
-                () -> FormUtil.openForm(new InvitationForm(new Event()))));
+        actionColumn.setCellEditor(new InvitationButtonEditor(
+                event -> FormUtil.openForm(new InvitationForm(event))));
     }
 
     @Override

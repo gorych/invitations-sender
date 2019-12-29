@@ -41,7 +41,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Event extends TableImpl<EventRecord> {
 
-    private static final long serialVersionUID = 1478709872;
+    private static final long serialVersionUID = -1484542981;
 
     /**
      * The reference instance of <code>event</code>
@@ -70,6 +70,11 @@ public class Event extends TableImpl<EventRecord> {
      * The column <code>event.description</code>.
      */
     public final TableField<EventRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+
+    /**
+     * The column <code>event.date</code>.
+     */
+    public final TableField<EventRecord, String> DATE = createField("date", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * Create a <code>event</code> table reference
