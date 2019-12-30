@@ -18,12 +18,10 @@ import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.function.ObjIntConsumer;
 
 import static by.gsu.util.DateTimeUtil.DD_MM_YYYY_FORMATTER;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
@@ -94,40 +92,35 @@ public class MainForm extends AbstractForm {
     }
 
     private void deletePeople() {
-        TableModel tableModel = peopleTable.getModel();
-
-        int checkedRowCount = 0;
-        for (int i = 0; i < peopleTable.getRowCount(); i++) {
-            boolean isCheckedRow = Boolean.parseBoolean(String.valueOf(tableModel.getValueAt(i, 0)));
-            if (isCheckedRow) {
-                checkedRowCount++;
-                Person person = (Person) tableModel.getValueAt(i, 6);
-                personService.delete(person);
-            }
-        }
-
-        if (checkedRowCount == 0) {
-            JOptionPane.showMessageDialog(mainPanel, "Не выбераны адресаты для удаления!", "Предупреждение", WARNING_MESSAGE);
-        }
+        deleteEntity(peopleTable, "Не выбераны адресаты для удаления!", (tableModel, rowIndex) -> {
+            Person person = (Person) tableModel.getValueAt(rowIndex, 6);
+            personService.delete(person);
+        });
     }
 
     private void deleteEvents() {
-        TableModel tableModel = eventsTable.getModel();
+        deleteEntity(peopleTable, "Не выбераны мероприятия для удаления!", (tableModel, rowIndex) -> {
+            Event event = (Event) tableModel.getValueAt(rowIndex, 6);
+            eventService.delete(event);
+        });
+
+    }
+
+    private void deleteEntity(JTable table, String errorMessage, ObjIntConsumer<TableModel> deleteAction) {
+        TableModel tableModel = table.getModel();
 
         int checkedRowCount = 0;
-        for (int i = 0; i < eventsTable.getRowCount(); i++) {
+        for (int i = 0; i < table.getRowCount(); i++) {
             boolean isCheckedRow = Boolean.parseBoolean(String.valueOf(tableModel.getValueAt(i, 0)));
             if (isCheckedRow) {
                 checkedRowCount++;
-                Event event = (Event) tableModel.getValueAt(i, 6);
-                eventService.delete(event);
+                deleteAction.accept(tableModel, i);
             }
         }
 
         if (checkedRowCount == 0) {
-            JOptionPane.showMessageDialog(mainPanel, "Не выбераны мероприятия для удаления!", "Предупреждение", WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(mainPanel, errorMessage, "Предупреждение", WARNING_MESSAGE);
         }
-
     }
 
     public void initPeopleTable() {
@@ -147,19 +140,7 @@ public class MainForm extends AbstractForm {
         }
 
         this.peopleTable.setModel(new CheckBoxColumnTableModel(data, columnNames, 0));
-
-        TableColumn selectionColumn = this.peopleTable.getColumn(SELECTION_COLUMN_NAME);
-        selectionColumn.setWidth(70);
-        selectionColumn.setMaxWidth(70);
-
-        TableColumn numberColumn = this.peopleTable.getColumn(NUMBER_COLUMN_NAME);
-        numberColumn.setWidth(30);
-        numberColumn.setMaxWidth(30);
-
-        TableColumn hiddenColumn = this.peopleTable.getColumn(HIDDEN_COLUMN_NAME);
-        hiddenColumn.setWidth(0);
-        hiddenColumn.setMinWidth(0);
-        hiddenColumn.setMaxWidth(0);
+        setColumnSizes(this.peopleTable);
     }
 
     public void initEventTable() {
@@ -179,24 +160,27 @@ public class MainForm extends AbstractForm {
         }
 
         this.eventsTable.setModel(new CheckBoxColumnTableModel(data, columnNames, 0, 5));
-
-        TableColumn selectionColumn = this.eventsTable.getColumn(SELECTION_COLUMN_NAME);
-        selectionColumn.setWidth(70);
-        selectionColumn.setMaxWidth(70);
-
-        TableColumn numberColumn = this.eventsTable.getColumn(NUMBER_COLUMN_NAME);
-        numberColumn.setWidth(30);
-        numberColumn.setMaxWidth(30);
-
-        TableColumn hiddenColumn = this.eventsTable.getColumn(HIDDEN_COLUMN_NAME);
-        hiddenColumn.setWidth(0);
-        hiddenColumn.setMinWidth(0);
-        hiddenColumn.setMaxWidth(0);
+        setColumnSizes(this.eventsTable);
 
         TableColumn actionColumn = this.eventsTable.getColumn(ACTION_COLUMN_NAME);
         actionColumn.setCellRenderer(new ButtonRender());
         actionColumn.setCellEditor(new InvitationButtonEditor(
                 event -> FormUtil.openForm(new InvitationForm(event))));
+    }
+
+    private void setColumnSizes(JTable peopleTable) {
+        TableColumn selectionColumn = peopleTable.getColumn(SELECTION_COLUMN_NAME);
+        selectionColumn.setWidth(70);
+        selectionColumn.setMaxWidth(70);
+
+        TableColumn numberColumn = peopleTable.getColumn(NUMBER_COLUMN_NAME);
+        numberColumn.setWidth(30);
+        numberColumn.setMaxWidth(30);
+
+        TableColumn hiddenColumn = peopleTable.getColumn(HIDDEN_COLUMN_NAME);
+        hiddenColumn.setWidth(0);
+        hiddenColumn.setMinWidth(0);
+        hiddenColumn.setMaxWidth(0);
     }
 
     @Override
