@@ -19,6 +19,10 @@ public class AddNewPerson extends AbstractForm {
 
     private static final Pattern EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    private static final String TITLE = "Добавление нового адресата";
+    private static final int PREF_WIDTH = 350;
+    private static final int PREF_HEIGHT = 300;
+
     private JPanel mainPanel;
 
     private JTextField textFieldFirstName;
@@ -77,17 +81,17 @@ public class AddNewPerson extends AbstractForm {
 
     @Override
     public String getTitle() {
-        return "Добавление нового адресата";
+        return TITLE;
     }
 
     @Override
     public int getWidth() {
-        return 350;
+        return PREF_WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return 300;
+        return PREF_HEIGHT;
     }
 
     @Override

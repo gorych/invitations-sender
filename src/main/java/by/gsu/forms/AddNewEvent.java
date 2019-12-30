@@ -20,6 +20,11 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class AddNewEvent extends AbstractForm {
 
     private static final Pattern DATE_PATTERN = Pattern.compile("\\d{2}.\\d{2}.\\d{4}");
+    private static final int TEXT_FIELD_WIDTH = 15;
+
+    private static final String TITLE = "Добавление нового мероприятия";
+    private static final int PREF_WIDTH = 370;
+    private static final int PREF_HEIGHT = 300;
 
     private JPanel mainPanel;
 
@@ -42,7 +47,7 @@ public class AddNewEvent extends AbstractForm {
                 .filter(component -> component instanceof JTextField)
                 .map(JTextField.class::cast);
 
-        textFieldsStream.get().forEach(textField -> textField.setColumns(15));
+        textFieldsStream.get().forEach(textField -> textField.setColumns(TEXT_FIELD_WIDTH));
 
         buttonAdd.addActionListener(e -> {
             long notFilledFieldsCount = textFieldsStream.get()
@@ -92,17 +97,17 @@ public class AddNewEvent extends AbstractForm {
 
     @Override
     public String getTitle() {
-        return "Добавление нового мероприятия";
+        return TITLE;
     }
 
     @Override
     public int getWidth() {
-        return 370;
+        return PREF_WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return 300;
+        return PREF_HEIGHT;
     }
 
     @Override
