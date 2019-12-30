@@ -99,7 +99,7 @@ public class MainForm extends AbstractForm {
     }
 
     private void deleteEvents() {
-        deleteEntity(peopleTable, "Не выбераны мероприятия для удаления!", (tableModel, rowIndex) -> {
+        deleteEntity(eventsTable, "Не выбераны мероприятия для удаления!", (tableModel, rowIndex) -> {
             Event event = (Event) tableModel.getValueAt(rowIndex, 6);
             eventService.delete(event);
         });

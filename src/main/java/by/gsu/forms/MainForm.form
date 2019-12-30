@@ -52,6 +52,10 @@
                     <properties>
                       <horizontalTextPosition value="0"/>
                       <margin top="0" left="0" bottom="0" right="0"/>
+                      <maximumSize width="175" height="26"/>
+                      <minimumSize width="175" height="26"/>
+                      <opaque value="false"/>
+                      <preferredSize width="175" height="26"/>
                       <text value="Добавить нового адресата"/>
                     </properties>
                   </component>
@@ -62,6 +66,7 @@
                     </constraints>
                     <properties>
                       <margin top="0" left="0" bottom="0" right="0"/>
+                      <preferredSize width="199" height="26"/>
                       <text value="Удалить выбранных адресатов"/>
                     </properties>
                   </component>
