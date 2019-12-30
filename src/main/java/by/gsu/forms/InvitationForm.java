@@ -1,7 +1,7 @@
 package by.gsu.forms;
 
 import by.gsu.dao.impl.PersonDaoImpl;
-import by.gsu.forms.custom.tablemodel.InvitationFormTableModel;
+import by.gsu.forms.custom.tablemodel.CheckBoxColumnTableModel;
 import by.gsu.mail.sender.MailSender;
 import by.gsu.mail.sender.impl.GmailMailSender;
 import by.gsu.model.Event;
@@ -10,6 +10,7 @@ import by.gsu.service.PersonService;
 import by.gsu.service.impl.PersonServiceImpl;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +19,14 @@ import java.util.concurrent.CompletableFuture;
 
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 public class InvitationForm extends AbstractForm {
 
     private static final MailSender MAIL_SENDER = new GmailMailSender();
     private static final String MAIL_SUBJECT = "Приглашение на мероприятие";
+
+    private static final String SELECTION_COLUMN_NAME = "Выбор";
 
     private static final int PREF_WIDTH = 700;
     private static final int PREF_HEIGHT = 500;
@@ -73,7 +76,7 @@ public class InvitationForm extends AbstractForm {
         }
 
         if (checkedRowCount == 0) {
-            JOptionPane.showMessageDialog(mainPanel, "Не выбраны люди для отправки приглашения!", "Предупреждение", WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(mainPanel, "Адресаты не выбраны!", "Предупреждение", WARNING_MESSAGE);
             return;
         }
 
@@ -81,7 +84,7 @@ public class InvitationForm extends AbstractForm {
     }
 
     private void initPersonTable() {
-        String[] columnNames = new String[]{"Выбор", "Фамилия", "Имя", "Отчество", "Электронная почта"};
+        String[] columnNames = new String[]{SELECTION_COLUMN_NAME, "Фамилия", "Имя", "Отчество", "Электронная почта"};
         List<Person> people = personService.getAll();
 
         Object[][] data = new Object[people.size()][columnNames.length];
@@ -94,7 +97,11 @@ public class InvitationForm extends AbstractForm {
             data[i][4] = person.getEmail();
         }
 
-        this.peopleTable.setModel(new InvitationFormTableModel(data, columnNames, 0));
+        this.peopleTable.setModel(new CheckBoxColumnTableModel(data, columnNames, 0));
+
+        TableColumn selectionColumn = this.peopleTable.getColumn(SELECTION_COLUMN_NAME);
+        selectionColumn.setWidth(70);
+        selectionColumn.setMaxWidth(70);
     }
 
     @Override
@@ -119,7 +126,7 @@ public class InvitationForm extends AbstractForm {
 
     @Override
     public int getDefaultCloseOperation() {
-        return EXIT_ON_CLOSE;
+        return DO_NOTHING_ON_CLOSE;
     }
 
     @Override

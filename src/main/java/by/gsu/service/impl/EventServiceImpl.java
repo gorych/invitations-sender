@@ -22,4 +22,9 @@ public class EventServiceImpl implements EventService {
         eventDao.save(event);
     }
 
+    @Override
+    public void delete(Event event) {
+        eventDao.delete(event);
+    }
+
 }

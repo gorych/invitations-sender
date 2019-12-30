@@ -33,7 +33,7 @@ public class InvitationButtonEditor extends DefaultCellEditor {
             button.setBackground(table.getBackground());
         }
 
-        event = (Event) table.getModel().getValueAt(row, 5);
+        event = (Event) table.getModel().getValueAt(row, 6);
 
         label = (value == null) ? "" : value.toString();
         button.setText(label);

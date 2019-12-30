@@ -25,7 +25,7 @@
             <border type="none"/>
             <children>
               <scrollpane id="9e644">
-                <constraints border-constraint="North"/>
+                <constraints border-constraint="First"/>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
                 </properties>
@@ -40,9 +40,17 @@
                 </children>
               </scrollpane>
               <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
-                <constraints border-constraint="Center"/>
+                <constraints border-constraint="East"/>
                 <properties>
+                  <margin top="0" left="0" bottom="0" right="0"/>
                   <text value="Добавить нового адресата"/>
+                </properties>
+              </component>
+              <component id="c1b75" class="javax.swing.JButton" binding="deletePeopleButton">
+                <constraints border-constraint="South"/>
+                <properties>
+                  <margin top="0" left="0" bottom="0" right="0"/>
+                  <text value="Удалить выбранных адресатов"/>
                 </properties>
               </component>
             </children>
@@ -54,23 +62,26 @@
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="ab436">
+              <component id="5955c" class="javax.swing.JTable" binding="eventsTable">
                 <constraints border-constraint="North"/>
                 <properties>
-                  <horizontalScrollBarPolicy value="31"/>
+                  <autoCreateRowSorter value="true"/>
                 </properties>
-                <border type="none"/>
-                <children>
-                  <component id="5955c" class="javax.swing.JTable" binding="eventsTable">
-                    <constraints/>
-                    <properties/>
-                  </component>
-                </children>
-              </scrollpane>
+              </component>
               <component id="78497" class="javax.swing.JButton" binding="addEventButton">
                 <constraints border-constraint="Center"/>
                 <properties>
                   <text value="Добавить новое мероприятие"/>
+                </properties>
+                <clientProperties>
+                  <hideActionText class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <component id="eea9" class="javax.swing.JButton" binding="deleteEventsButton">
+                <constraints border-constraint="South"/>
+                <properties>
+                  <actionCommand value="Удалить выбранные мероприятия"/>
+                  <text value="Удалить выбранные мероприятия"/>
                 </properties>
               </component>
             </children>

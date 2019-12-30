@@ -47,6 +47,11 @@ public class EventDaoImpl implements EventDao {
                 .execute();
     }
 
+    @Override
+    public void delete(List<Event> events) {
+        events.forEach(this::delete);
+    }
+
     private Event saveOrUpdate(Event event, EventRecord eventRecord) {
         eventRecord.setName(event.getName());
         eventRecord.setDescription(event.getDescription());

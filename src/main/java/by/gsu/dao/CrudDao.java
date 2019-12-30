@@ -1,5 +1,7 @@
 package by.gsu.dao;
 
+import by.gsu.model.Event;
+
 import java.util.List;
 import java.util.Optional;
 

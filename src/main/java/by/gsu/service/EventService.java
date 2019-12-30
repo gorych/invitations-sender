@@ -10,4 +10,6 @@ public interface EventService {
 
     void add(Event event);
 
+    void delete(Event event);
+
 }

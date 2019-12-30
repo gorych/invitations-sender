@@ -26,10 +26,16 @@ public class Person {
 
     public static class Builder {
 
+        private int id;
         private String firstName;
         private String middleName;
         private String lastName;
         private String email;
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;

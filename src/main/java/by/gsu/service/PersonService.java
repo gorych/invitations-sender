@@ -10,4 +10,6 @@ public interface PersonService {
 
     void add(Person person);
 
+    void delete(Person person);
+
 }

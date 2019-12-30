@@ -55,4 +55,8 @@ public class PersonDaoImpl implements PersonDao {
         return new Person(personRecord);
     }
 
+    @Override
+    public void delete(List<Person> people) {
+        people.forEach(this::delete);
+    }
 }

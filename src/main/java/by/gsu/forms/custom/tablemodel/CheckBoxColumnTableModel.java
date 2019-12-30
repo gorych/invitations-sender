@@ -1,8 +1,8 @@
 package by.gsu.forms.custom.tablemodel;
 
-public class InvitationFormTableModel extends ReadOnlyTableModel {
+public class CheckBoxColumnTableModel extends ReadOnlyTableModel {
 
-    public InvitationFormTableModel(Object[][] data, Object[] columnNames, int... editableColumns) {
+    public CheckBoxColumnTableModel(Object[][] data, Object[] columnNames, int... editableColumns) {
         super(data, columnNames, editableColumns);
     }
 
