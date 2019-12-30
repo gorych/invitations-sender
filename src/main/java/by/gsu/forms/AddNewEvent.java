@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import static by.gsu.util.DateTimeUtil.DD_MM_YYYY_FORMATTER;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.*;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 public class AddNewEvent extends AbstractForm {
@@ -51,12 +50,12 @@ public class AddNewEvent extends AbstractForm {
                     .count();
 
             if (notFilledFieldsCount > 0) {
-                JOptionPane.showMessageDialog(mainPanel, "Заполните все поля!", "Предупреждение", WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(mainPanel, "Заполните все поля!", "Ошибка", ERROR_MESSAGE);
                 return;
             }
 
             if (!isDateCorrect()) {
-                JOptionPane.showMessageDialog(mainPanel, "Дата введена некорректно! Введите дату в формате 31.12.2019", "Предупреждение", WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(mainPanel, "Дата введена некорректно! Введите дату в формате 31.12.2019", "Ошибка", ERROR_MESSAGE);
                 return;
             }
 
@@ -72,8 +71,8 @@ public class AddNewEvent extends AbstractForm {
     }
 
     private boolean isDateCorrect() {
-        boolean isDateMatched = DATE_PATTERN.matcher(textFieldDate.getText()).matches();
-        if (!isDateMatched) {
+        boolean isValidDate = DATE_PATTERN.matcher(textFieldDate.getText()).matches();
+        if (!isValidDate) {
             return false;
         }
 

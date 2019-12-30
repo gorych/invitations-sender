@@ -25,7 +25,7 @@
             <border type="none"/>
             <children>
               <scrollpane id="9e644">
-                <constraints border-constraint="First"/>
+                <constraints border-constraint="Center"/>
                 <properties>
                   <horizontalScrollBarPolicy value="31"/>
                 </properties>
@@ -39,20 +39,34 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
-                <constraints border-constraint="East"/>
-                <properties>
-                  <margin top="0" left="0" bottom="0" right="0"/>
-                  <text value="Добавить нового адресата"/>
-                </properties>
-              </component>
-              <component id="c1b75" class="javax.swing.JButton" binding="deletePeopleButton">
-                <constraints border-constraint="South"/>
-                <properties>
-                  <margin top="0" left="0" bottom="0" right="0"/>
-                  <text value="Удалить выбранных адресатов"/>
-                </properties>
-              </component>
+              <grid id="6aadd" layout-manager="GridBagLayout">
+                <constraints border-constraint="Last"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <horizontalTextPosition value="0"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <text value="Добавить нового адресата"/>
+                    </properties>
+                  </component>
+                  <component id="c1b75" class="javax.swing.JButton" binding="deletePeopleButton">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="0" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <text value="Удалить выбранных адресатов"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
           <grid id="753d6" binding="eventsTab" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -62,28 +76,48 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="5955c" class="javax.swing.JTable" binding="eventsTable">
-                <constraints border-constraint="North"/>
-                <properties>
-                  <autoCreateRowSorter value="true"/>
-                </properties>
-              </component>
-              <component id="78497" class="javax.swing.JButton" binding="addEventButton">
+              <grid id="8ed16" layout-manager="GridBagLayout">
+                <constraints border-constraint="Last"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="78497" class="javax.swing.JButton" binding="addEventButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Добавить новое мероприятие"/>
+                    </properties>
+                    <clientProperties>
+                      <hideActionText class="java.lang.Boolean" value="false"/>
+                    </clientProperties>
+                  </component>
+                  <component id="eea9" class="javax.swing.JButton" binding="deleteEventsButton">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="0" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <actionCommand value="Удалить выбранные мероприятия"/>
+                      <text value="Удалить выбранные мероприятия"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <scrollpane id="76c61">
                 <constraints border-constraint="Center"/>
-                <properties>
-                  <text value="Добавить новое мероприятие"/>
-                </properties>
-                <clientProperties>
-                  <hideActionText class="java.lang.Boolean" value="false"/>
-                </clientProperties>
-              </component>
-              <component id="eea9" class="javax.swing.JButton" binding="deleteEventsButton">
-                <constraints border-constraint="South"/>
-                <properties>
-                  <actionCommand value="Удалить выбранные мероприятия"/>
-                  <text value="Удалить выбранные мероприятия"/>
-                </properties>
-              </component>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="5955c" class="javax.swing.JTable" binding="eventsTable">
+                    <constraints/>
+                    <properties>
+                      <autoCreateRowSorter value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
           </grid>
         </children>

@@ -18,9 +18,12 @@ import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import static by.gsu.util.DateTimeUtil.DD_MM_YYYY_FORMATTER;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
@@ -58,15 +61,15 @@ public class MainForm extends AbstractForm {
     private final Map<Component, Runnable> onSelectTabActions;
 
     public MainForm() {
-        this.peopleTable.setRowSelectionAllowed(true);
-        this.eventsTable.setRowSelectionAllowed(true);
+        peopleTable.setRowSelectionAllowed(true);
+        eventsTable.setRowSelectionAllowed(true);
 
         onSelectTabActions = new HashMap<>();
         onSelectTabActions.put(peopleTab, this::initPeopleTable);
         onSelectTabActions.put(eventsTab, this::initEventTable);
 
-        this.eventService = new EventServiceImpl(new EventDaoImpl());
-        this.personService = new PersonServiceImpl(new PersonDaoImpl());
+        eventService = new EventServiceImpl(new EventDaoImpl());
+        personService = new PersonServiceImpl(new PersonDaoImpl());
 
         initPeopleTable();
         initEventTable();

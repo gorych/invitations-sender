@@ -9,13 +9,15 @@ import org.jooq.tools.StringUtils;
 import javax.swing.*;
 import java.util.Arrays;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.*;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 public class AddNewPerson extends AbstractForm {
+
+    private static final Pattern EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     private JPanel mainPanel;
 
@@ -46,7 +48,13 @@ public class AddNewPerson extends AbstractForm {
                     .count();
 
             if (notFilledFieldsCount > 0) {
-                JOptionPane.showMessageDialog(mainPanel, "Заполните все поля!", "Предупреждение", WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(mainPanel, "Заполните все поля!", "Ошибка", ERROR_MESSAGE);
+                return;
+            }
+
+            boolean isValidEmail = EMAIL_REGEX.matcher(textFieldEmail.getText()).matches();
+            if (!isValidEmail) {
+                JOptionPane.showMessageDialog(mainPanel, "Электронный адрес заполнен неверно!", "Ошибка", ERROR_MESSAGE);
                 return;
             }
 
