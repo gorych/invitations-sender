@@ -25,9 +25,9 @@ public class AddNewPerson extends AbstractForm {
 
     private JPanel mainPanel;
 
+    private JTextField textFieldLastName;
     private JTextField textFieldFirstName;
     private JTextField textFieldMiddleName;
-    private JTextField textFieldLastName;
     private JTextField textFieldEmail;
 
     private JButton buttonAdd;
@@ -63,9 +63,9 @@ public class AddNewPerson extends AbstractForm {
             }
 
             personService.add(new Person.Builder()
-                    .setFirstName(textFieldFirstName.getText())
-                    .setMiddleName(textFieldMiddleName.getText())
-                    .setLastName(textFieldLastName.getText())
+                    .setFirstName(textFieldLastName.getText())
+                    .setMiddleName(textFieldFirstName.getText())
+                    .setLastName(textFieldMiddleName.getText())
                     .setEmail(textFieldEmail.getText())
                     .build());
 

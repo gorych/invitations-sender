@@ -51,8 +51,8 @@ public class InvitationForm extends AbstractForm {
     private void sendInvitations(Event event) {
         Map<String, Object> dataModel = new HashMap<>();
         dataModel.put("eventDay", event.getDay());
-        dataModel.put("eventMonth", event.getMonth());
-        dataModel.put("eventName", event.getName().toUpperCase());
+        dataModel.put("eventMonth", event.getMonth().toUpperCase());
+        dataModel.put("eventName", event.getName());
         dataModel.put("eventDescription", event.getDescription());
 
         TableModel tableModel = peopleTable.getModel();
