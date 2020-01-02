@@ -6,7 +6,6 @@ package by.gsu.domain;
 
 import by.gsu.domain.tables.Event;
 import by.gsu.domain.tables.Person;
-import by.gsu.domain.tables.PersonEvent;
 
 import javax.annotation.Generated;
 
@@ -34,7 +33,6 @@ public class Indexes {
 
     public static final Index EVENTS_ID_UINDEX = Indexes0.EVENTS_ID_UINDEX;
     public static final Index PERSON_ID_UINDEX = Indexes0.PERSON_ID_UINDEX;
-    public static final Index USER_EVENT_ID_UINDEX = Indexes0.USER_EVENT_ID_UINDEX;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -43,6 +41,5 @@ public class Indexes {
     private static class Indexes0 {
         public static Index EVENTS_ID_UINDEX = Internal.createIndex("events_id_uindex", Event.EVENT, new OrderField[] { Event.EVENT.ID }, true);
         public static Index PERSON_ID_UINDEX = Internal.createIndex("person_id_uindex", Person.PERSON, new OrderField[] { Person.PERSON.ID }, true);
-        public static Index USER_EVENT_ID_UINDEX = Internal.createIndex("user_event_id_uindex", PersonEvent.PERSON_EVENT, new OrderField[] { PersonEvent.PERSON_EVENT.ID }, true);
     }
 }

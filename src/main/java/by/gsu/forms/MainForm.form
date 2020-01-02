@@ -40,34 +40,33 @@
                 </children>
               </scrollpane>
               <grid id="6aadd" layout-manager="GridBagLayout">
-                <constraints border-constraint="Last"/>
+                <constraints border-constraint="South"/>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
-                    </constraints>
-                    <properties>
-                      <horizontalTextPosition value="0"/>
-                      <margin top="0" left="0" bottom="0" right="0"/>
-                      <maximumSize width="175" height="26"/>
-                      <minimumSize width="175" height="26"/>
-                      <opaque value="false"/>
-                      <preferredSize width="175" height="26"/>
-                      <text value="Добавить нового адресата"/>
-                    </properties>
-                  </component>
                   <component id="c1b75" class="javax.swing.JButton" binding="deletePeopleButton">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="0" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <margin top="0" left="0" bottom="0" right="0"/>
                       <preferredSize width="199" height="26"/>
                       <text value="Удалить выбранных адресатов"/>
+                    </properties>
+                  </component>
+                  <component id="e3a56" class="javax.swing.JButton" binding="addPersonButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <horizontalTextPosition value="0"/>
+                      <margin top="0" left="0" bottom="0" right="0"/>
+                      <minimumSize width="700" height="26"/>
+                      <opaque value="false"/>
+                      <preferredSize width="700" height="26"/>
+                      <text value="Добавить нового адресата"/>
                     </properties>
                   </component>
                 </children>
@@ -82,16 +81,17 @@
             <border type="none"/>
             <children>
               <grid id="8ed16" layout-manager="GridBagLayout">
-                <constraints border-constraint="Last"/>
+                <constraints border-constraint="South"/>
                 <properties/>
                 <border type="none"/>
                 <children>
                   <component id="78497" class="javax.swing.JButton" binding="addEventButton">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="0" right="5" weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
+                      <preferredSize width="700" height="26"/>
                       <text value="Добавить новое мероприятие"/>
                     </properties>
                     <clientProperties>
@@ -100,11 +100,12 @@
                   </component>
                   <component id="eea9" class="javax.swing.JButton" binding="deleteEventsButton">
                     <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="0" left="5" bottom="5" right="5" weightx="1.0" weighty="1.0"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="5" left="5" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <actionCommand value="Удалить выбранные мероприятия"/>
+                      <preferredSize width="100" height="26"/>
                       <text value="Удалить выбранные мероприятия"/>
                     </properties>
                   </component>

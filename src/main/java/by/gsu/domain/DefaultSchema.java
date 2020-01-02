@@ -7,7 +7,6 @@ package by.gsu.domain;
 import by.gsu.domain.tables.Event;
 import by.gsu.domain.tables.Person;
 import by.gsu.domain.tables.PersonDgTmp;
-import by.gsu.domain.tables.PersonEvent;
 import by.gsu.domain.tables.SqliteSequence;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = -399880555;
+    private static final long serialVersionUID = -1136030054;
 
     /**
      * The reference instance of <code></code>
@@ -55,11 +54,6 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>person_dg_tmp</code>.
      */
     public final PersonDgTmp PERSON_DG_TMP = by.gsu.domain.tables.PersonDgTmp.PERSON_DG_TMP;
-
-    /**
-     * The table <code>person_event</code>.
-     */
-    public final PersonEvent PERSON_EVENT = by.gsu.domain.tables.PersonEvent.PERSON_EVENT;
 
     /**
      * The table <code>sqlite_sequence</code>.
@@ -94,7 +88,6 @@ public class DefaultSchema extends SchemaImpl {
             Event.EVENT,
             Person.PERSON,
             PersonDgTmp.PERSON_DG_TMP,
-            PersonEvent.PERSON_EVENT,
             SqliteSequence.SQLITE_SEQUENCE);
     }
 }
